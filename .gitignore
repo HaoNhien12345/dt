@@ -1,160 +1,499 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+import random
+import tkinter as tk
+import tkinter.font as tkFont
+from tkinter import *
+import time
+from tkinter import CENTER, Tk, RIGHT, BOTH, RAISED
+from tkinter.ttk import Frame, Button, Style, Label
+from tkinter import simpledialog
+from PIL import Image, ImageTk
+from tkinter import Tk, Canvas
+from tkinter import Frame, Tk, Menu
+from tkintermapview import TkinterMapView
+from tkinter import messagebox
+from PIL import Image, ImageTk
+from time import strftime
 
-# C extensions
-*.so
+def show_button():
+    button.place(x=200, y=70)
+    password_entry = tk.Entry(window, show=password_entry)
+def move_button():
+    if username_entry.get() == "" or password_entry.get() == "":
+        button.place(x=random.randint(0, window.winfo_width()-button.winfo_reqwidth()), 
+                     y=random.randint(0, window.winfo_height()-button.winfo_reqheight()))
+        button.config(bg="red", text="Điền sai thông tin")
+    if username_entry.get() == "Sony0508" or password_entry.get() == "sony05082010":
+        button.place(x=80, y=100)
+        button.config(bg="green", text="Đã vào thành công")
+        def truth_or_dare():
+                root = Tk()
+                root.configure(bg='light blue')  
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+                welcome_label = tk.Label(root, text="* Chào mừng bạn đến với trò chơi :3 *", font=("VNI-Dom", 15), fg='purple')
+                welcome_label.pack()
+                new_label = tk.Label(root, text="* Bắt đầu trò chơi! *", font=("VNI-Dom", 15), fg='purple')
+                new_label.pack()
+                new_label.pack_forget()
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+                truths = ["Ai là người bạn đang yêu thầm?", "Có bao giờ bạn đi bơi mà khỏa thân chưa?", "Khoảnh khắc xấu hổ nhất của bạn là gì?", "Việc ngu ngốc nhất bạn đã từng làm là gì?", "Bạn sẽ đem ai đi cùng đến đảo hoang?", "Nỗi sợ lớn nhất của bạn là gì?", "Crush của bạn là ai?", "Bạn đã từng 'báo' chưa=))?", "Bạn có từng yêu thầm ai trong phòng này không?", "Bạn có bí mật gì mà không ai biết?", "Cậu nghĩ gì về tớ vào lần đầu gặp mặt?", "Bạn đã từng giả chữ kí chưa=))??", "Bạn quý thầy/cô giáo nào trong trường nhất?", "Bạn sẽ làm gì nếu bạn có giới tính khác trong một ngày?", "Thứ mà bạn tìm kiếm trên Google mới đây nhất là gì?", "Có bao giờ bạn giả ốm để thoát khỏi chuyện gì đó chưa?", "Bạn có bao giờ lan truyền tin đồn về ai trong số những người ở đây không?", "Lần cuối cùng bạn tè dầm là lúc nào?"]
+                dares = ["Chống đẩy 10 cái", "Hôn người bên phải của bạn", "Gọi điện cho crush và nói 'tớ thích cậu,!!!", "Không được nói cho đến khi đến lượt bạn", "Đi ra nói với một bạn nữ bất kì và nói 'tớ thích cậu!!'", "Squad 15 cái=))", "Hát một bài hát bất kì", "Để cho người bên tay trái bạn chọn một bài hất và bạn phải hất bài hát đó!!", "Nhảy một điệu nhảy=))", "Đăng một video bắt chước tiếng chó sủa hoặc mèo kêu.", "Gửi phản hồi trái tim cho bài đăng trên mạng xã hội của người mà bạn yêu thầm.", "Ra ngoài và hét “Tôi là người xấu!”", "Khen ngợi tất cả những người chơi.", "Xoa bóp bàn chân cho người ngồi bên trái bạn.", "Hát thay vì nói cho đến khi trò chơi kết thúc."]
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+                def XO(): pass
+                class TicTacToe:
+                    def __init__(self, master):
+                        # Initialize the game window
+                        self.master = master
+                        self.master.title("Tic Tac Toe")
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
+                        # Keep track of the current player (either "X" or "O")
+                        self.current_player = "X"
 
-# Translations
-*.mo
-*.pot
+                        # Initialize the game board as an empty 3x3 array
+                        self.board = [
+                            ["", "", ""],
+                            ["", "", ""],
+                            ["", "", ""]
+                        ]
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+                        # Create the buttons for the game board
+                        self.buttons = []
+                        for row in range(3):
+                            button_row = []
+                            for col in range(3):
+                                # Each button has a command that calls the handle_click method
+                                button = tk.Button(
+                                    self.master,
+                                    text="",
+                                    font=("Helvetica", 30),
+                                    width=3,
+                                    height=1,
+                                    command=lambda row=row, col=col: self.handle_click(row, col),
+                                    bg="lightblue" # Set the background color of the button
+                                )
+                                # Position the button in the game grid
+                                button.grid(row=row, column=col, sticky="nsew")
+                                button_row.append(button)
+                            self.buttons.append(button_row)
 
-# Flask stuff:
-instance/
-.webassets-cache
+                    def handle_click(self, row, col):
+                        # Check if the clicked cell is empty
+                        if self.board[row][col] == "":
+                            # Update the board and the button text with the current player's symbol
+                            self.board[row][col] = self.current_player
+                            self.buttons[row][col].config(text=self.current_player)
+                            # Check if the current player has won or the game is tied
+                            if self.check_win() or self.check_tie():
+                                # If so, call the game_over method
+                                self.game_over()
+                            else:
+                                # If not, switch to the other player's turn
+                                self.switch_player()
 
-# Scrapy stuff:
-.scrapy
+                    def switch_player(self):
+                        # Alternate between "X" and "O" after each move
+                        if self.current_player == "X":
+                            self.current_player = "O"
+                        else:
+                            self.current_player = "X"
 
-# Sphinx documentation
-docs/_build/
+                    def check_win(self):
+                        # Check if any row has three of the same symbol in a row
+                        for i in range(3):
+                            if self.board[i][0] == self.board[i][1] == self.board[i][2] != "":
+                                return True
+                        # Check if any column has three of the same symbol in a row
+                            if self.board[0][i] == self.board[1][i] == self.board[2][i] != "":
+                                return True
+                        # Check if the diagonal from top-left to bottom-right has three of the same symbol
+                        if self.board[0][0] == self.board[1][1] == self.board[2][2] != "":
+                            return True
+                        # Check if the diagonal from top-right to bottom-left has three of the same symbol
+                        if self.board[2][0] == self.board[1][1] == self.board[0][2] != "":
+                            return True
+                        # If no winning combination is found, return False
+                        return False
 
-# PyBuilder
-.pybuilder/
-target/
+                    def check_tie(self):
+                        # Check if all cells are filled
+                        for i in range(3):
+                            for j in range(3):
+                                if self.board[i][j] == "":
+                                    return False
+                        # If all cells are filled and no one has won, the game is tied
+                        return True
 
-# Jupyter Notebook
-.ipynb_checkpoints
+                    def game_over(self):
+                        # Disable all buttons and display a message announcing the winner or a tie.
+                        for row in self.buttons:
+                            for button in row:
+                                button.config(state="disabled")
+                        if self.check_win():
+                            winner = self.current_player
+                            message = f"Player {winner} wins!"
+                        else:
+                            message = "It's a tie!"
+                        # Create a label to display the game-over message
+                        msg_label = tk.Label(self.master, text=message, font=("Helvetica", 20))
+                        msg_label.grid(row=3, column=0, columnspan=3)
 
-# IPython
-profile_default/
-ipython_config.py
+                    def reset_game(self):
+                        # Reset the game board and buttons
+                        self.board = [
+                            ["", "", ""],
+                            ["", "", ""],
+                            ["", "", ""]
+                        ]
+                        for row in self.buttons:
+                            for button in row:
+                                button.config(state="normal", text="")
 
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
+                def start_game():
+                    start_button.pack_forget()
+                    welcome_label.pack_forget()
+                    new_label.pack()
+                    root.after(2000, show_prompt)
+                    random_button.pack(padx=5, pady=5)
+                    truth_button.pack(padx=5, pady=5)
+                    dare_button.pack(padx=5, pady=5)
+                    add_truth_button.pack(padx=5, pady=5)
+                    add_dare_button.pack(padx=5, pady=5)
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
+                start_button = tk.Button(root, text="⁂ Start ⁂", command=start_game)
+                start_button.pack()
 
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
+                def show_prompt():
+                    new_label.pack_forget()
+                    prompt_label = tk.Label(root, text="⇗ Chọn ⇑ đi:3 ⇖", font=("VNI-Dom", 15), fg='purple')
+                    prompt_label.pack()
 
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/#use-with-ide
-.pdm.toml
+                def choose_truth():
+                    result = random.choice(truths)
+                    result_label.config(text=result)
+                    new_label.pack_forget()
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
+                def choose_dare():
+                    result = random.choice(dares)
+                    result_label.config(text=result)
+                    new_label.pack_forget()
 
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
+                def add_new_truth():
+                    new_truth = simpledialog.askstring("Thêm câu hỏi mới", "Nhập câu hỏi mới (⌒▽⌒)☆:")
+                    if new_truth:
+                        truths.append(new_truth)
 
-# SageMath parsed files
-*.sage.py
+                def add_new_dare():
+                    new_dare = simpledialog.askstring("Thêm thách thức mới", "Nhập thách thức mới ╰(▔∀▔)╯:")
+                    if new_dare:
+                        dares.append(new_dare)
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+                def choose_random():
+                    if random.choice([True, False]):
+                        choose_truth()
+                    else:
+                        choose_dare()
 
-# Spyder project settings
-.spyderproject
-.spyproject
+                random_button = tk.Button(root, text="Random(ﾉ≧∀≦)ﾉ", command=choose_random)
+                random_button.pack()
+                random_button.pack_forget()
 
-# Rope project settings
-.ropeproject
+                result_label = tk.Label(root, text="", wraplength=300)
+                result_label.pack()
 
-# mkdocs documentation
-/site
+                truth_button = tk.Button(root, text="|Truth|･ω･)", command=choose_truth)
+                truth_button.pack()
+                truth_button.pack_forget()
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+                dare_button = tk.Button(root, text="|Dare|д･)", command=choose_dare)
+                dare_button.pack()
+                dare_button.pack_forget()
 
-# Pyre type checker
-.pyre/
+                add_truth_button = tk.Button(root, text="Thêm câu hỏi mới đi mấy bri ٩(◕‿◕｡)۶", command=add_new_truth)
+                add_truth_button.pack()
+                add_truth_button.pack_forget()
 
-# pytype static type analyzer
-.pytype/
+                add_dare_button = tk.Button(root, text="Thêm thách thức mới đê mấy ní ヽ(*・ω・)ﾉ", command=add_new_dare)
+                add_dare_button.pack()
+                add_dare_button.pack_forget()
 
-# Cython debug symbols
-cython_debug/
+                random_button.config(font=("Verdana", 12))
+                truth_button.config(font=("Verdana", 11))
+                dare_button.config(font=("Verdana", 11))
+                start_button.config(font=("Verdana", 15))
+                add_truth_button.config(font=("Verdana", 10))
+                add_dare_button.config(font=("Verdana", 10))
 
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+                root.geometry("400x300+300+300")
+                root.mainloop()
+
+        def tic_tac_toe():
+                import tkinter as tk
+
+                class TicTacToe:
+                    def __init__(self, master):
+                        # Initialize the game window
+                        self.master = master
+                        self.master.title("Tic Tac Toe")
+
+                        # Keep track of the current player (either "X" or "O")
+                        self.current_player = "X"
+
+                        # Initialize the game board as an empty 3x3 array
+                        self.board = [
+                            ["", "", ""],
+                            ["", "", ""],
+                            ["", "", ""]
+                        ]
+
+                        # Create the buttons for the game board
+                        self.buttons = []
+                        for row in range(3):
+                            button_row = []
+                            for col in range(3):
+                                # Each button has a command that calls the handle_click method
+                                button = tk.Button(
+                                    self.master,
+                                    text="",
+                                    font=("Helvetica", 30),
+                                    width=3,
+                                    height=1,
+                                    command=lambda row=row, col=col: self.handle_click(row, col),
+                                    bg="lightblue" # Set the background color of the button
+                                )
+                                # Position the button in the game grid
+                                button.grid(row=row, column=col, sticky="nsew")
+                                button_row.append(button)
+                            self.buttons.append(button_row)
+
+                    def handle_click(self, row, col):
+                        # Check if the clicked cell is empty
+                        if self.board[row][col] == "":
+                            # Update the board and the button text with the current player's symbol
+                            self.board[row][col] = self.current_player
+                            self.buttons[row][col].config(text=self.current_player)
+                            # Check if the current player has won or the game is tied
+                            if self.check_win() or self.check_tie():
+                                # If so, call the game_over method
+                                self.game_over()
+                            else:
+                                # If not, switch to the other player's turn
+                                self.switch_player()
+
+                    def switch_player(self):
+                        # Alternate between "X" and "O" after each move
+                        if self.current_player == "X":
+                            self.current_player = "O"
+                        else:
+                            self.current_player = "X"
+
+                    def check_win(self):
+                        # Check if any row has three of the same symbol in a row
+                        for i in range(3):
+                            if self.board[i][0] == self.board[i][1] == self.board[i][2] != "":
+                                return True
+                        # Check if any column has three of the same symbol in a row
+                            if self.board[0][i] == self.board[1][i] == self.board[2][i] != "":
+                                return True
+                        # Check if the diagonal from top-left to bottom-right has three of the same symbol
+                        if self.board[0][0] == self.board[1][1] == self.board[2][2] != "":
+                            return True
+                        # Check if the diagonal from top-right to bottom-left has three of the same symbol
+                        if self.board[2][0] == self.board[1][1] == self.board[0][2] != "":
+                            return True
+                        # If no winning combination is found, return False
+                        return False
+
+                    def check_tie(self):
+                        # Check if all cells are filled
+                        for i in range(3):
+                            for j in range(3):
+                                if self.board[i][j] == "":
+                                    return False
+                        # If all cells are filled and no one has won, the game is tied
+                        return True
+
+                    def game_over(self):
+                        # Disable all buttons and display a message announcing the winner or a tie.
+                        for row in self.buttons:
+                            for button in row:
+                                button.config(state="disabled")
+                        if self.check_win():
+                            winner = self.current_player
+                            message = f"Player {winner} wins!"
+                        else:
+                            message = "It's a tie!"
+                        # Create a label to display the game-over message
+                        msg_label = tk.Label(self.master, text=message, font=("Helvetica", 20))
+                        msg_label.grid(row=3, column=0, columnspan=3)
+
+                    def reset_game(self):
+                        # Reset the game board and buttons
+                        self.board = [
+                            ["", "", ""],
+                            ["", "", ""],
+                            ["", "", ""]
+                        ]
+                        for row in self.buttons:
+                            for button in row:
+                                button.config(state="normal", text="")
+
+                # Create the main window and start the game
+                root = tk.Tk()
+                game = TicTacToe(root)
+                root.mainloop()
+
+        def gg_map():
+                from tkintermapview import TkinterMapView
+                from tkinter import messagebox
+                import time
+
+                try: 
+                    root = Tk()
+                    root.geometry("1300x680")
+                    root.title("Python Map")
+                    root.resizable(0, 0)
+
+                    gmap_widget = TkinterMapView(root, width=1000, height=660)
+                    gmap_widget.place(x=290, y=10)
+
+                    mylocation = gmap_widget.set_address("quang truong hoa binh", marker=True)
+                    mylocation.set_text("My Location")
+
+                    gmap_widget.set_zoom(5)
+
+                    gmap_widget.set_tile_server(
+                        "https://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga", 
+                        max_zoom=22
+                    )
+
+                    def find():
+                        try:
+                            gmap_widget.set_address(query.get())
+                        except Exception:
+                            messagebox.showerror("Python Map", "Can't find your location")
+
+                    def setMK():
+                        gmap_widget.set_address(query.get(), marker=True)
+                
+                    def clear():
+                        gmap_widget.delete_all_marker()
+
+                    def update_time():
+                        current_time = time.strftime('%H:%M:%S %p')
+                        time_label.config(text=f"Current time: {current_time}")
+                        root.after(1000, update_time)
+
+                    txt = Label(root, text="Type here to search", font="arial 11")
+                    txt.place(x=86, y=5)
+
+                    txt1 = Label(root, text="Change dark/light mode", font="arial 11")
+                    txt1.place(x=75, y=470)
+
+                    dark = PhotoImage(file="dark1.png")
+                    light = PhotoImage(file="light1.png")
+
+                    query = Entry(root, font="arial 15", fg="#558DDF", justify=CENTER)
+                    query.place(x=41, y=30)
+
+                    find_button = Button(root, font="arial 11", text="Find", fg="white", command=find, bg="#558DDF", width=8)
+                    find_button.place(x=111, y=60)
+
+                    set_button = Button(root, font="arial 11", text="Set location marker", fg="white", command=setMK, bg="#558DDF", width=20)
+                    set_button.place(x=60, y=350)
+
+                    clear_button = Button(root, font="arial 11", text="Clear all markers", fg="white", command=clear, bg="#558DDF", width=20)
+                    clear_button.place(x=60, y=380)
+
+                    time_label = Label(root, fg="black", bg="#F0F0F0", font="arial 13")
+                    time_label.place(x=54, y=250)
+                    update_time()
+
+                    btn = True
+
+                    def darklight():
+                        global btn
+
+                        if btn: 
+                            mode.config(image=dark, bg="#26242f", activebackground="#26242f")
+                            root.config(bg="#26242f")
+                            txt.config(fg="White", bg="#26242f")
+                            txt1.config(fg="White", bg="#26242f")
+                            time_label.config(fg="white", bg="#26242f")
+                            btn = False
+                        else:
+                            mode.config(image=light, bg="#F0F0F0", activebackground="#F0F0F0")
+                            root.config(bg="#F0F0F0")
+                            txt.config(fg="black", bg="#F0F0F0")
+                            txt1.config(fg="black", bg="#F0F0F0")
+                            time_label.config(fg="black", bg="#F0F0F0")
+                            btn = True
+
+                    mode = Button(root, image=light, bd=0, command=darklight, bg="#F0F0F0")
+                    mode.place(x=105, y=500)
+
+                except AttributeError: pass
+
+        def yt():
+                import tkinter as tk
+                import webbrowser
+
+                root = Tk()
+                def open_youtube():
+                    webbrowser.open("https://www.youtube.com")
+
+                button = tk.Button(root, text="Youtube", command=open_youtube)
+                button.pack()
+
+        def fb():
+                import tkinter as tk
+                import webbrowser
+
+                root = Tk()
+                def open_facebook():
+                    webbrowser.open("https://www.facebook.com")
+
+                button = tk.Button(root, text="Facebook", command=open_facebook)
+                button.pack()
+
+        r = Tk()
+        r.geometry("300x300")
+        r.title("Home screen")
+        r.resizable(0, 0)
+
+        Label(r, text="(´｡• ᵕ •｡`) ♡", font="arial 15 bold").place(x=100, y=250)
+
+        Button(r, text="Tic Tac Toe", width=30, command=tic_tac_toe).place(x=55, y=70)
+        Button(r, text="Truth or dare", width=30, command=truth_or_dare).place(x=55, y=100)
+        Button(r, text="Google map", width=30, command=gg_map).place(x=55, y=130)
+        Button(r, text="Youtube", width=30, command=yt).place(x=55, y=160)
+        Button(r, text="Facebook", width=30, command=fb).place(x=55, y=190)
+
+        def time():
+                string = strftime('%H:%M:%S %p')
+                label.config(text=string)
+                label.after(1000, time)
+
+        label = Label(r, font=('calibri', 20, 'bold'), foreground='black')
+        label.place(x=80, y=20)
+        time()
+
+        r.mainloop()
+
+window = tk.Tk()
+window.geometry('250x250')
+
+username_label = tk.Label(window, text="Tài khoản:")
+username_label.place(x=35, y=40)
+username_entry = tk.Entry(window)
+username_entry.place(x=100, y=40)
+
+password_label = tk.Label(window, text="Mật khẩu:")
+password_label.place(x=35, y=70)
+password_entry = tk.Entry(window, show="*")
+password_entry.place(x=100, y=70)
+
+button = tk.Button(window, text="Click me", command=move_button)
+button.place(x=80, y=100)
+button = tk.Button(window, text="Show", command=show_button)
+button.place(x=200, y=70)
+
+window.mainloop()
